@@ -172,3 +172,31 @@ a {
   color: var(--near-white);
   background-color: var(--mid-grey) !important;
 }
+.rr-controls-panel {
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 0;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+
+.rr-search-panel {
+  margin-left: auto;
+}
+
+.rr-sort-button {
+  background-color: var(--mid-grey);
+  color: var(--near-white);
+  border-radius: .125rem;
+  padding: .25rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  cursor: pointer;
+}
+.rr-search-button {
+  border-radius: .125rem;
+  padding: .25rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  margin-left: -5px;
+}
