@@ -1,17 +1,14 @@
-import EmberObject, { computed } from '@ember/object';
-import { dasherize } from '@ember/string';
+import DS from "ember-data";
+import { computed } from "@ember/object";
 
-export default EmberObject.extend({
-  name: '',
+const { Model, attr, hasMany } = DS;
 
-  init() {
-    this._super(...arguments);
-    if (!this.songs) {
-      this.set('songs', []);
-    }
-  },
-
-  slug: computed('name', function() {
-    return dasherize(this.name);
+export default Model.extend({
+  name: attr("string"),
+  description: attr("string"),
+  songs: hasMany(),
+  isGreatBand: computed("songs.@each.rating", function() {
+    let goodSongs = this.get("songs").filter(song => song.rating >= 4);
+    return goodSongs.length >= 2;
   })
 });

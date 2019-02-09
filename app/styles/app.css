@@ -31,11 +31,6 @@ a {
   border-bottom: 1px solid;
 }
 
-.rr-page-header > .rr-app-title {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 .rr-app-title > .rr-app-subtitle {
   font-weight: normal;
 }
@@ -45,13 +40,19 @@ a {
 }
 
 :root {
+  --bright-yellow: #ffda00;
   --blue: #357edd;
   --dark-blue: #00449e;
   --light-blue: #96ccff;
   --mid-grey: #555;
   --near-white: #f4f4f4;
-  --input-color: var(--mid-grey); --button-color: var(--near-white); --button-bg-color: var(--blue); --button-hover-color: var(--dark-blue); --button-disabled-color: var(--light-blue);
-  }
+  --navitem-link-color: var(--bright-yellow);
+  --input-color: var(--mid-grey);
+  --button-color: var(--near-white);
+  --button-bg-color: var(--blue);
+  --button-hover-color: var(--dark-blue);
+  --button-disabled-color: var(--light-blue);
+}
 
 .rr-navbar {
   position: relative;
@@ -149,4 +150,25 @@ a {
 
 .rating-panel > .rating-star {
   cursor: pointer;
+}
+
+.rr-header-link > .rr-app-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.rr-panel {
+  padding: 1rem;
+  border: .125rem solid; border-radius: .125rem;
+}
+
+.rr-textarea {
+  width: 100%;
+  padding: .5rem;
+}
+
+#ember-testing-container {
+  font-family: 'avenir next', avenir, sans-serif;
+  color: var(--near-white);
+  background-color: var(--mid-grey) !important;
 }
