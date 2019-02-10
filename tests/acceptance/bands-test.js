@@ -1,6 +1,6 @@
 import { module, test } from "qunit";
 import { visit, click, fillIn, currentURL } from "@ember/test-helpers";
-import { createBand, createSong } from "rarwe/tests/helpers/custom-helpers";
+import { loginAs, createBand, createSong } from 'rarwe/tests/helpers/custom-helpers';
 import { setupApplicationTest } from "ember-qunit";
 import setupMirageTest from "ember-cli-mirage/test-support/setup-mirage";
 
@@ -8,9 +8,17 @@ module("Acceptance | Bands", function(hooks) {
   setupApplicationTest(hooks);
   setupMirageTest(hooks);
 
+  test('Visit landing page without signing in', async function(assert) {
+    await visit('/');
+    assert.dom('[data-test-rr=form-header]').hasText('Log in to R&R');
+    assert.dom('[data-test-rr=user-email]').doesNotExist();
+  });
+
   test("List bands", async function(assert) {
     this.server.create("band", { name: "Radiohead" });
     this.server.create("band", { name: "Long Distance Calling" });
+
+    await loginAs('dave@tcv.com');
     await visit("/");
 
     assert
@@ -29,6 +37,7 @@ module("Acceptance | Bands", function(hooks) {
 
   test("Create a band", async function(assert) {
     this.server.create("band", { name: "Royal Blood" });
+    await loginAs('dave@tcv.com');
     await visit("/");
     await createBand("Caspian");
 
@@ -45,6 +54,7 @@ module("Acceptance | Bands", function(hooks) {
 
   test("Create a song", async function(assert) {
     this.server.create("band", { name: "Radiohead" });
+    await loginAs('dave@tcv.com');
     await visit("/");
 
     await click("[data-test-rr=band-link]");
@@ -72,6 +82,7 @@ module("Acceptance | Bands", function(hooks) {
       rating: 3,
       band
     });
+    await loginAs('dave@tcv.com');
     await visit("/");
     await click("[data-test-rr=band-link]");
     assert.equal(currentURL(), "/bands/1/songs");
@@ -155,6 +166,7 @@ module("Acceptance | Bands", function(hooks) {
       band
     });
 
+    await loginAs('dave@tcv.com');
     await visit("/");
     await click("[data-test-rr=band-link]");
     await fillIn("[data-test-rr=search-box]", "no");
