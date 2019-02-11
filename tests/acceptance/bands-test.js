@@ -106,7 +106,7 @@ module("Acceptance | Bands", function(hooks) {
         "The last song is the lowest ranked, last one in the alphabet"
       );
 
-    await click("[data-test-rr=sort-by-title-desc]");
+    await fillIn("[data-test-rr=sort-selector]", "titleDesc");
     assert.equal(currentURL(), '/bands/1/songs?sort=titleDesc');
     assert
       .dom("[data-test-rr=song-list-item]:first-child")
@@ -121,7 +121,7 @@ module("Acceptance | Bands", function(hooks) {
         "The last song is the one that comes first in the alphabet"
       );
 
-    await click("[data-test-rr=sort-by-title-asc]");
+    await fillIn("[data-test-rr=sort-selector]", "titleAsc");
     assert.equal(currentURL(), '/bands/1/songs?sort=titleAsc');
     assert
       .dom("[data-test-rr=song-list-item]:first-child")
@@ -136,7 +136,7 @@ module("Acceptance | Bands", function(hooks) {
         "The last song is the one that comes last in the alphabet"
       );
 
-    await click("[data-test-rr=sort-by-rating-asc]");
+    await fillIn("[data-test-rr=sort-selector]", "ratingAsc");
     assert.equal(currentURL(), '/bands/1/songs?sort=ratingAsc');
     assert
       .dom("[data-test-rr=song-list-item]:first-child")
@@ -183,7 +183,7 @@ module("Acceptance | Bands", function(hooks) {
       .dom("[data-test-rr=song-list-item]")
       .exists({ count: 2 }, "The songs matching the search term are displayed");
 
-    await click("[data-test-rr=sort-by-title-desc]");
+    await fillIn("[data-test-rr=sort-selector]", "titleDesc");
 
     assert.ok(currentURL().includes("s=no"));
     assert.ok(currentURL().includes("sort=titleDesc"));
