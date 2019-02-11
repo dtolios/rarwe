@@ -3,6 +3,7 @@ import { visit, click, fillIn, currentURL } from "@ember/test-helpers";
 import { loginAs, createBand, createSong } from 'rarwe/tests/helpers/custom-helpers';
 import { setupApplicationTest } from "ember-qunit";
 import setupMirageTest from "ember-cli-mirage/test-support/setup-mirage";
+import { percySnapshot } from 'ember-percy/snapshot';
 
 module("Acceptance | Bands", function(hooks) {
   setupApplicationTest(hooks);
@@ -20,6 +21,8 @@ module("Acceptance | Bands", function(hooks) {
 
     await loginAs('dave@tcv.com');
     await visit("/");
+
+    percySnapshot('List of bands');
 
     assert
       .dom("[data-test-rr=band-link]")
@@ -85,6 +88,9 @@ module("Acceptance | Bands", function(hooks) {
     await loginAs('dave@tcv.com');
     await visit("/");
     await click("[data-test-rr=band-link]");
+
+    percySnapshot('Sort songs - Default sorting order');
+
     assert.equal(currentURL(), "/bands/1/songs");
 
     assert

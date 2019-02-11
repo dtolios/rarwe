@@ -291,3 +291,19 @@ a {
   margin: .25em 0;
   color: var(--error-color);
 }
+
+.rr-sort-panel {
+  align-self: center;
+}
+
+.rr-select {
+  height: 30px;
+  line-height: 30px;
+}
+
+/* needed due to bug in percy */
+/* #ember-testing {
+  font-family: 'avenir next', avenir, sans-serif;
+  color: var(--near-white);
+  background-color: var(--mid-grey) !important;
+} */
