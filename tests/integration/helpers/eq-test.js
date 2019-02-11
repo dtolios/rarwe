@@ -10,8 +10,8 @@ module('Integration | Helper | eq', function(hooks) {
   test('it renders', async function(assert) {
     this.set('inputValue', '1234');
 
-    await render(hbs`{{eq inputValue}}`);
+    await render(hbs`{{eq inputValue "1234"}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.equal(this.element.textContent.trim(), "true");
   });
 });
