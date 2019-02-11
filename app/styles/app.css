@@ -277,3 +277,17 @@ a {
   display: flex;
   justify-content: center;
 }
+
+.rr-cancel-icon-left {
+  align-self: center;
+  margin-right: .25rem; /* .mr1 */
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.rr-form-field-error {
+  width: 100%;
+  margin: .25em 0;
+  color: var(--error-color);
+}
